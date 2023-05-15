@@ -132,22 +132,16 @@ select {
   letter-spacing: -0.01em;
 }
 .Ftitle {
-  width: 501px;
-  height: 30px;
 
-  font-family: "Roboto";
-  font-style: normal;
   font-weight: 600;
+  letter-spacing: -1px;
   font-size: 24px;
   line-height: 125.3%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #3c4852;
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
+  
 }
 .subSelect {
   display: flex;
@@ -346,6 +340,7 @@ select {
 }
 .rightSubscrBtm{
   font-size: 24px;
+  font-weight: 600;
 }
  
 .btns{
