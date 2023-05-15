@@ -7,6 +7,7 @@ import live from '../assets/live.png'
 import sco from '../assets/sco.png'
 import clock11 from '../assets/click11.png'
 import razer from '../assets/razer.png'
+import noads from '../assets/noads.png'
 export default function Hero() {
 
   const [select,setSelect]=useState({
@@ -56,7 +57,7 @@ export default function Hero() {
             </span>
           </div>
           <div className="pointer">
-          <img src={live} alt="" />
+          <img src={noads} alt="" />
             <span>
               <span className='Primary1'>Ad Free
               </span> learning experience
