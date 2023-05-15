@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {MdRadioButtonChecked,MdRadioButtonUnchecked} from 'react-icons/md'
 import {BsCheckCircleFill} from 'react-icons/bs'
 import book from '../assets/book.png'
@@ -8,6 +8,15 @@ import sco from '../assets/sco.png'
 import clock11 from '../assets/click11.png'
 import razer from '../assets/razer.png'
 export default function Hero() {
+
+  const [select,setSelect]=useState({
+    12:true,
+    6:false,
+    3:false,
+  })
+  const [value,setValue]=useState(179)
+  const [discount,setDiscount]=useState(18401)
+  const [total,setTotal]=useState(value+(18500-discount));
   return (
     <div className='Hero'>
       <div className="leftHero">
@@ -72,7 +81,7 @@ export default function Hero() {
               <span>Select your subscription plan</span>
             </div>
             <div className="subSelect">
-              <div className="sub1">
+              <div className="sub1" >
               <div className="tag"><span>Offer expired</span></div>
                 <div className="sub1L">
                 <div className="rbs">
@@ -89,11 +98,22 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
-              <div className="sub2">
+              <div className={`sub2 ${select[12]?'subb':'sub'}`} onClick={()=>{
+                setSelect({
+                  12:true,
+                  6:false,
+                  3:false
+                })
+                setTotal(0)
+
+                setValue(179);
+                setDiscount(18401)
+                setTotal(value+(18500-discount))
+              }}>
               <span className='tag'>Recommended</span>
                 <div className="sub2L">
-                <div className="checkFill">
-                  <BsCheckCircleFill/>
+                <div className={` ${select[12]?'checkFill':'checkEmpty'}`}>
+                  {select[12]?<BsCheckCircleFill/>:<MdRadioButtonUnchecked/>}
                 </div>
                 <div className="txt">12 Months Subscription</div>
                 </div>
@@ -106,10 +126,24 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
-              <div className="sub">
+              <div className={`${select[6]?'subb':'sub'}`} onClick={()=>{
+                setSelect({
+                  12:false,
+                  6:true,
+                  3:false
+                })
+                setTotal(0)
+
+                setValue(149);
+                setDiscount(18301)
+                setTotal(value+(18500-discount))
+
+
+              }}>
              <div className="subL">
-             <div className="checkEmpty">
-                  <MdRadioButtonUnchecked/>
+             <div className={`${select[6]?'checkFill':'checkEmpty'}`}>
+             {select[6]?<BsCheckCircleFill/>:<MdRadioButtonUnchecked/>}
+
                 </div>
                 <div className="txt">6 Months Subscription</div>
              </div>
@@ -122,10 +156,24 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
-              <div className="sub">
+              <div className={`${select[3]?'subb':'sub'}`} onClick={()=>{
+                setSelect({
+                  12:false,
+                  6:false,
+                  3:true
+                })
+                setTotal(0)
+                setValue(199);
+                setDiscount(18201)
+                setTotal(value+(18500-discount))
+
+
+
+              }}>
               <div className="subL">
-              <div className="checkEmpty">
-                  <MdRadioButtonUnchecked/>
+              <div className={`${select[3]?'checkFill':'checkEmpty'}`}>
+             {select[3]?<BsCheckCircleFill/>:<MdRadioButtonUnchecked/>}
+                  
                 </div>
                 <div className="txt">3 Months Subscription</div>
               </div>
@@ -147,7 +195,7 @@ export default function Hero() {
               <div className="subScrMid">
                 <div className="midTop">
                   <span style={{color: '#DE4313',fontWeight: '600'}}>Limited time offer</span>
-                  <span>-₹18,000</span>
+                  <span>-₹{discount}</span>
                 </div>
                 <div className="midBottom">
                   <img src={clock11} alt="" style={{color: '#DE4313'}}/>
@@ -156,7 +204,7 @@ export default function Hero() {
               </div>
               <div className="subScrBottom">
                 <div className="leftSubscrBtm"><span style={{fontWeight: '600'}}>Total</span> (Incl. of 18% GST)</div>
-                 <div className="rightSubscrBtm"><span>₹149</span></div>
+                 <div className="rightSubscrBtm"><span>₹{total}</span></div>
               </div>
 
             </div>
